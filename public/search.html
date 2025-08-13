@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results | Eternal Ink Books</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="container">
+            <div class="logo"><a href="index.html">Eternal Ink Books</a></div>
+            <nav>
+                <form class="search-form" action="search.html" method="GET">
+                    <input type="search" name="q" placeholder="Search for a tome..." class="search-input" autocomplete="off">
+                    <div class="autocomplete-box"></div>
+                </form>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><button id="theme-toggle-btn" class="btn-nav">☀️</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="catalog-main">
+        <aside class="filter-sidebar">
+            <h3>Filters</h3>
+            <form id="filter-form">
+                <div class="filter-group">
+                    <h4>Genre</h4>
+                    <div class="filter-option">
+                        <input type="checkbox" id="genre-pr" name="genre" value="Paranormal Romance">
+                        <label for="genre-pr">Paranormal Romance</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="genre-hf" name="genre" value="High Fantasy">
+                        <label for="genre-hf">High Fantasy</label>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <h4>Price</h4>
+                    <label for="max-price">Max Price:</label>
+                    <input type="number" id="max-price" name="maxPrice" placeholder="e.g., 20" step="0.01">
+                </div>
+                 <div class="filter-group">
+                    <h4>Rating</h4>
+                    <label for="min-rating">Min Rating:</label>
+                    <input type="range" id="min-rating" name="minRating" min="1" max="5" step="0.5" value="1">
+                    <span id="rating-value">1.0</span>
+                </div>
+                <button type="submit" class="btn">Apply Filters</button>
+            </form>
+        </aside>
+        <div class="catalog-content">
+            <div class="catalog-header">
+                <h2 id="catalog-title">All Tomes</h2>
+                <div class="sorting-options">
+                    <label for="sort-by">Sort by:</label>
+                    <select name="sort-by" id="sort-by">
+                        <option value="popularity">Popularity</option>
+                        <option value="newest">New Releases</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="rating">Rating</option>
+                    </select>
+                </div>
+            </div>
+            <section id="search-results-section">
+                <div id="search-results-grid" class="book-grid">
+                    <!-- Search results will be dynamically inserted here -->
+                    <p>Loading results...</p>
+                </div>
+                <div id="pagination-container" class="pagination-container">
+                    <!-- "Load More" button will be inserted here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2024 Eternal Ink Books. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/search.js"></script> <!-- A dedicated script for this page -->
+    <script src="js/script.js"></script> <!-- Main script for header logic -->
+</body>
+</html>
