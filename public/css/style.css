@@ -293,6 +293,25 @@ form {
 }
 
 /* Book Detail Page */
+#book-detail-main {
+    padding-top: 120px; /* Adjust based on header height */
+}
+
+.book-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.book-detail-cover img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
 .book-detail-title {
     text-shadow: 0 0 10px var(--accent-gold);
 }
@@ -314,8 +333,23 @@ form {
 }
 
 .collapsible-btn {
+    background-color: var(--bg-secondary);
     color: var(--accent-gold);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
     border-bottom: 1px solid var(--accent-burgundy);
+    transition: background-color 0.3s ease;
+}
+
+.collapsible-btn:hover {
+    background-color: var(--accent-burgundy);
+    color: var(--text-inverted);
 }
 
 .collapsible-btn:after {
@@ -323,8 +357,13 @@ form {
 }
 
 .collapsible-content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
     background-color: var(--bg-tertiary);
     border-left: 2px solid var(--accent-gold);
+    margin-bottom: 1rem;
 }
 
 /* Reviews Section */

@@ -4,7 +4,7 @@
     "title": "The Serpent and the Wings of Night",
     "author": "Carissa Broadbent",
     "release_year": 2022,
-    "cover_image": "images/placeholder1.jpg",
+    "cover_image": "https://placehold.co/400x600/1A1A2E/FFFFFF/png?text=The+Serpent+\nand+the+\nWings+of+Night",
     "price": 18.99,
     "category": {
       "main": "Paranormal Romance",
@@ -32,7 +32,7 @@
     "title": "A Court of Thorns and Roses",
     "author": "Sarah J. Maas",
     "release_year": 2015,
-    "cover_image": "images/placeholder2.jpg",
+    "cover_image": "https://placehold.co/400x600/1A1A2E/FFFFFF/png?text=A+Court+of+\nThorns+and+Roses",
     "price": 16.50,
     "category": {
       "main": "Enchanted Worlds",
@@ -59,7 +59,7 @@
     "title": "Fourth Wing",
     "author": "Rebecca Yarros",
     "release_year": 2023,
-    "cover_image": "images/placeholder3.jpg",
+    "cover_image": "https://placehold.co/400x600/1A1A2E/FFFFFF/png?text=Fourth+Wing",
     "price": 22.00,
     "category": {
       "main": "Epic Fantasy Romance",
@@ -87,7 +87,12 @@
     "title": "The Last Shadow Weaver",
     "author": "Elara Vance",
     "release_year": 2024,
-    "cover_concept": "A silver-haired sorceress stands in a moonlit, obsidian cave, weaving threads of darkness and starlight between her hands. The title is in an elegant, sharp silver font.",
+    "cover_image": "https://placehold.co/400x600/1A1A2E/FFFFFF/png?text=The+Last+\nShadow+Weaver",
+    "price": {
+      "base": 19.99,
+      "discount_percent": 15,
+      "final": 16.99
+    },
     "category": {
       "main": "Dark Romance",
       "sub": "Enemies to Lovers"
@@ -99,11 +104,6 @@
     },
     "rating": 4.7,
     "popularity": 88,
-    "price": {
-      "base": 19.99,
-      "discount_percent": 15,
-      "final": 16.99
-    },
     "tags": ["dark romance", "shadow magic", "enemies to lovers", "forbidden power", "spicy", "morally grey hero"],
     "description": "In a world where shadow magic is a death sentence, Lyra is the last of her kind, hiding her power behind a quiet life. But when the tyrannical Sunstone Empire captures her brother, her only hope is to ally with Kai, the Emperor's ruthless and enigmatic assassin. He despises everything she is, yet their shared desire for vengeance pulls them into a dangerous dance of secrets and shadows. As they journey into the heart of the empire, the line between hatred and passion blurs, and Lyra must decide if trusting her sworn enemy is worth the price of her soul."
   },
@@ -112,7 +112,12 @@
     "title": "The Iron Prince of the Fae Court",
     "author": "Rhys Corvid",
     "release_year": 2023,
-    "cover_concept": "An armored Fae prince with iron wings and glowing amber eyes sits on a throne of twisted metal and thorns. The background is a blurred, ethereal forest. The title is in a strong, metallic gold font.",
+    "cover_image": "https://placehold.co/400x600/1A1A2E/FFFFFF/png?text=The+Iron+Prince+\nof+the+Fae+Court",
+    "price": {
+      "base": 17.99,
+      "discount_percent": 0,
+      "final": 17.99
+    },
     "category": {
       "main": "Urban Fantasy Love",
       "sub": "Fae Romance"
@@ -124,11 +129,6 @@
     },
     "rating": 4.4,
     "popularity": 85,
-    "price": {
-      "base": 17.99,
-      "discount_percent": 0,
-      "final": 17.99
-    },
     "tags": ["urban fantasy", "fae romance", "political intrigue", "hidden royalty", "modern fantasy"],
     "description": "Callum is a struggling artist in New York City, unaware that the Fae courts are hidden in plain sight. His life is upended when he's discovered to be the long-lost heir to the Iron Court, a kingdom of exiled Fae living in the city's underbelly. Thrown into a world of treacherous politics and ancient magic, he must navigate alliances with a court that sees him as an outsider. His only guide is Elara, a fierce Fae warrior who believes he's a weakness her court can't afford. But as they work together to protect their people from a rival court, their animosity sparks into an unexpected and forbidden connection."
   },
@@ -137,7 +137,12 @@
     "title": "The Star-Crossed Siren",
     "author": "Marina Celeste",
     "release_year": 2024,
-    "cover_concept": "A beautiful siren with iridescent scales and starlight in her hair looks up from a swirling, deep blue ocean towards a starry sky. A single constellation glows brightly above her.",
+    "cover_image": "https://placehold.co/400x600/1A1A2E/FFFFFF/png?text=The+Star-Crossed+\nSiren",
+    "price": {
+      "base": 18.99,
+      "discount_percent": 10,
+      "final": 17.09
+    },
     "category": {
       "main": "Forbidden Love",
       "sub": "Mythical Romance"
@@ -149,11 +154,6 @@
     },
     "rating": 4.6,
     "popularity": 82,
-    "price": {
-      "base": 18.99,
-      "discount_percent": 10,
-      "final": 17.09
-    },
     "tags": ["siren", "mythical romance", "forbidden love", "star-crossed lovers", "celestial magic", "sweet romance"],
     "description": "Lira has spent her life in the abyssal depths, her siren song a lure for doomed sailors. But unlike her sisters, she dreams of the stars, not the sea. One night, she rescues a man who has fallen from the sky—a celestial being named Orion, tasked with charting the constellations. Stranded in her world, he is forbidden from consorting with mortals, and she is bound to the ocean. They form a secret bond, sharing stories of their two worlds. Their love is impossible, a defiance of the laws of both sea and sky. As their feelings deepen, they must challenge fate itself to find a way to be together, before their respective worlds tear them apart forever."
   },
@@ -162,7 +162,12 @@
     "title": "The Alchemist's Heart",
     "author": "Julian Croft",
     "release_year": 2022,
-    "cover_concept": "An intricate, glowing heart made of gears and enchanted crystals is held between two hands—one gloved in leather, the other adorned with elegant rings. The background is a dimly lit, cluttered alchemical workshop.",
+    "cover_image": "https://placehold.co/400x600/1A1A2E/FFFFFF/png?text=The+Alchemist's+\nHeart",
+    "price": {
+      "base": 15.99,
+      "discount_percent": 0,
+      "final": 15.99
+    },
     "category": {
       "main": "Enchanted Worlds",
       "sub": "Steampunk Romance"
@@ -174,11 +179,6 @@
     },
     "rating": 4.3,
     "popularity": 75,
-    "price": {
-      "base": 15.99,
-      "discount_percent": 0,
-      "final": 15.99
-    },
     "tags": ["steampunk romance", "alchemy", "academic rivals", "mystery", "enchanted worlds", "grumpy sunshine"],
     "description": "In the gaslit city of Aethel, renowned alchemist Elias Thorne is a man of logic and precision, haunted by his failure to create the legendary Philosopher's Stone. His quiet research is interrupted by Clara, a brilliant and insufferably cheerful botanist who claims to have found a flower with impossible properties. As academic rivals forced to work together, they uncover a conspiracy that threatens the city's magical core. Elias finds his logical world turned upside down by Clara's chaotic optimism, while she sees a hidden warmth beneath his grumpy exterior. Their intellectual sparring soon ignites into a deeper connection, as they realize the greatest discovery isn't the stone, but the magic they create together."
   },
@@ -187,7 +187,12 @@
     "title": "The Werewolf's Vow",
     "author": "Luna Blackwood",
     "release_year": 2023,
-    "cover_concept": "A massive, silver-white wolf stands protectively in front of a woman in a simple, medieval dress. They are in a snowy forest under a full moon, and the wolf's eyes glow with a soft, blue light.",
+    "cover_image": "https://placehold.co/400x600/1A1A2E/FFFFFF/png?text=The+Werewolf's+\nVow",
+    "price": {
+      "base": 17.99,
+      "discount_percent": 5,
+      "final": 17.09
+    },
     "category": {
       "main": "Paranormal Romance",
       "sub": "Shifter Romance"
@@ -199,11 +204,6 @@
     },
     "rating": 4.5,
     "popularity": 90,
-    "price": {
-      "base": 17.99,
-      "discount_percent": 5,
-      "final": 17.09
-    },
     "tags": ["werewolf romance", "shifter romance", "fated mates", "paranormal romance", "protector", "spicy"],
     "description": "Isolde is an outcast in her village, feared for the dormant magic she possesses. When a monstrous beast terrorizes their lands, the villagers offer her as a sacrifice. She is rescued by Fenrir, the stoic and powerful alpha of the local werewolf pack. He recognizes her not as a sacrifice, but as his fated mate, a truth his pack is unwilling to accept. Bound by his vow to protect her, Fenrir brings Isolde into his world of pack law and ancient traditions. As Isolde's magic awakens under the moon's glow, she must earn her place in the pack while navigating the intense, primal bond she shares with a man who is more wolf than human. Their love is a defiance of both their worlds, and a beacon against the growing darkness."
   }
