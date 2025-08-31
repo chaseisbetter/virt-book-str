@@ -9,14 +9,14 @@
 
 :root {
   /* Dark Theme (Default) */
-  --bg-primary: #0A0A1A;
+  --bg-primary: #1A1A2E;
   --bg-secondary: #0E0E20;
   --bg-tertiary: rgba(255,255,255,0.02);
   --bg-footer: #080818;
   --text-primary: #e0e0e0;
   --text-muted: #a0a0a0;
   --text-inverted: #0A0A1A;
-  --accent-gold: #FFD700;
+  --accent-gold: #D4AF37;
   --accent-burgundy: #800020;
   --accent-crimson: #dc143c;
   --link-color: var(--accent-gold);
