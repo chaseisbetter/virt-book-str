@@ -5,7 +5,11 @@
     "author": "Carissa Broadbent",
     "release_year": 2022,
     "cover_image": "https://placehold.co/400x600/1A1A2E/FFFFFF/png?text=The+Serpent+\nand+the+\nWings+of+Night",
-    "price": 18.99,
+    "price": {
+      "base": 18.99,
+      "discount_percent": 0,
+      "final": 18.99
+    },
     "category": {
       "main": "Paranormal Romance",
       "sub": "Vampire Romance"
@@ -33,7 +37,11 @@
     "author": "Sarah J. Maas",
     "release_year": 2015,
     "cover_image": "https://placehold.co/400x600/1A1A2E/FFFFFF/png?text=A+Court+of+\nThorns+and+Roses",
-    "price": 16.50,
+    "price": {
+      "base": 16.50,
+      "discount_percent": 0,
+      "final": 16.50
+    },
     "category": {
       "main": "Enchanted Worlds",
       "sub": "Fae Romance"
@@ -60,7 +68,11 @@
     "author": "Rebecca Yarros",
     "release_year": 2023,
     "cover_image": "https://placehold.co/400x600/1A1A2E/FFFFFF/png?text=Fourth+Wing",
-    "price": 22.00,
+    "price": {
+      "base": 22.00,
+      "discount_percent": 0,
+      "final": 22.00
+    },
     "category": {
       "main": "Epic Fantasy Romance",
       "sub": "Dragon Rider Romance"

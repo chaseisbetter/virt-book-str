@@ -16,6 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/auth', require('./api/routes/auth'));
 app.use('/api/users', require('./api/routes/users'));
 app.use('/api/books', require('./api/routes/books'));
+app.use('/api/posts', require('./api/routes/posts'));
 app.use('/api/search', require('./api/routes/search'));
 
 // Simple test route
