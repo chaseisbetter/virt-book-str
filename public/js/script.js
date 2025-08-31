@@ -1,78 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Welcome to Eternal Ink Books!');
 
-    // --- Particle Animation (for homepage) ---
-    const canvas = document.getElementById('particle-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let particles = [];
 
-        const setCanvasSize = () => {
-            // Set canvas size to the hero section's size
-            const hero = document.getElementById('hero');
-            if (hero) {
-                canvas.width = hero.offsetWidth;
-                canvas.height = hero.offsetHeight;
-            }
-        };
-
-        const createParticles = () => {
-            particles = [];
-            const particleCount = Math.floor(canvas.width / 40);
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 2 + 1,
-                    speedX: (Math.random() * 0.5 - 0.25),
-                    speedY: (Math.random() * -0.5 - 0.2),
-                    color: 'rgba(255, 215, 0, ' + (Math.random() * 0.5 + 0.3) + ')'
-                });
-            }
-        };
-
-        const animateParticles = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.x += p.speedX;
-                p.y += p.speedY;
-                if (p.y < 0 || p.x < 0 || p.x > canvas.width) {
-                    p.y = canvas.height + 10;
-                    p.x = Math.random() * canvas.width;
-                }
-                ctx.fillStyle = p.color;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            requestAnimationFrame(animateParticles);
-        };
-
-        setCanvasSize();
-        createParticles();
-        animateParticles();
-        window.addEventListener('resize', () => {
-            setCanvasSize();
-            createParticles();
-        });
-    }
-
-    // --- Smooth Scrolling (for homepage nav) ---
-    const homeNavLinks = document.querySelectorAll('#main-header nav a[href*="#"]');
-    if (homeNavLinks.length > 0) {
-        homeNavLinks.forEach(anchor => {
-            if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html')) {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            }
-        });
-    }
 
     // --- Signup Form Logic ---
     const signupForm = document.getElementById('signup-form');
@@ -149,37 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Dynamic Book Loading (for homepage) ---
-    const bookGrid = document.querySelector('.book-grid');
-    if (bookGrid) {
-        const fetchBooks = async () => {
-            try {
-                const res = await fetch('/api/books');
-                if (!res.ok) throw new Error('Could not fetch books from the inkwell.');
-                const books = await res.json();
-
-                if (books.length === 0) {
-                    bookGrid.innerHTML = '<p>No tomes found in the library. Please check back later.</p>';
-                    return;
-                }
-
-                let bookCardsHTML = '';
-                books.forEach(book => {
-                    bookCardsHTML += `
-                        <div class="book-card">
-                            <img src="${book.cover_image}" alt="Cover of ${book.title}" class="book-cover">
-                            <h3 class="book-title">${book.title}</h3>
-                            <p class="book-author">${book.author}</p>
-                        </div>
-                    `;
-                });
-                bookGrid.innerHTML = bookCardsHTML;
-            } catch (err) {
-                bookGrid.innerHTML = `<p style="color: var(--burgundy);">${err.message}</p>`;
-            }
-        };
-        fetchBooks();
-    }
 
     // --- Search Autocomplete & Debouncing ---
     const searchInput = document.querySelector('.search-input');
