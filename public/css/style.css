@@ -86,6 +86,10 @@ a:hover {
     color: var(--link-hover);
 }
 
+#main-header nav a:hover {
+    text-shadow: 0 0 8px var(--accent-gold);
+}
+
 .container {
     width: 90%;
     max-width: 1100px;
