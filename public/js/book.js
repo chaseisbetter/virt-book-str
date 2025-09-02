@@ -137,9 +137,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    const setupAddToCartAnimation = () => {
+        const addToCartButton = document.querySelector('.book-detail-actions .btn-primary');
+        const bookCover = document.getElementById('book-cover');
+
+        if (!addToCartButton || !bookCover) return;
+
+        addToCartButton.addEventListener('click', (e) => {
+            const coverRect = bookCover.getBoundingClientRect();
+
+            const flyingCover = document.createElement('img');
+            flyingCover.src = bookCover.src;
+            flyingCover.style.position = 'fixed';
+            flyingCover.style.left = coverRect.left + 'px';
+            flyingCover.style.top = coverRect.top + 'px';
+            flyingCover.style.width = coverRect.width + 'px';
+            flyingCover.style.height = coverRect.height + 'px';
+            flyingCover.style.zIndex = '200';
+
+            document.body.appendChild(flyingCover);
+
+            flyingCover.classList.add('fly-to-cart-animation');
+
+            flyingCover.addEventListener('animationend', () => {
+                flyingCover.remove();
+            });
+        });
+    };
+
     const bookId = getBookId();
     if (bookId) {
-        fetchBookData(bookId);
+        fetchBookData(bookId).then(setupAddToCartAnimation);
     } else {
         displayError('No book specified. Please select a tome from our collection.');
     }
