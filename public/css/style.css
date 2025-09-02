@@ -146,25 +146,60 @@ a:hover {
     align-items: center;
 }
 
-#main-header .search-form {
+#hero .search-form {
     position: relative;
-    width: 250px;
-}
-
-#main-header .search-input {
-    background-color: rgba(0,0,0,0.2);
-    border: 1px solid var(--header-bg);
-    border-radius: 20px;
-    padding: 0.5rem 1rem;
     width: 100%;
-    color: var(--text-primary);
-    transition: all 0.3s ease;
+    max-width: 600px;
+    margin-top: 2rem;
 }
 
-#main-header .search-input:focus {
-    background-color: rgba(0,0,0,0.4);
-    border-color: var(--header-accent-gold);
-    box-shadow: 0 0 10px var(--header-accent-gold);
+#hero .search-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    padding-right: 4rem; /* Space for the button */
+    font-size: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--text-primary);
+    background: linear-gradient(to right, var(--header-bg), var(--header-gradient));
+    border: 1px solid var(--header-accent-gold);
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease-out;
+}
+
+#hero .search-input::placeholder {
+    color: #c0b4d4; /* Soft lavender */
+    opacity: 0.8;
+}
+
+#hero .search-btn {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--header-accent-gold);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+#hero .search-input:focus,
+#hero .search-input:hover {
+    border-color: var(--header-highlight-pink);
+    box-shadow: 0 0 15px 5px rgba(244, 171, 196, 0.2);
+}
+
+#hero .search-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+#hero .search-btn:hover svg {
+    filter: drop-shadow(0 0 3px var(--header-accent-gold));
 }
 
 .logo {
@@ -205,8 +240,10 @@ a:hover {
 .hero-content {
     position: relative;
     z-index: 1;
-    margin: 0 auto; /* Explicitly center */
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #hero h1 {
