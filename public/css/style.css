@@ -8,6 +8,12 @@
 }
 
 :root {
+  /* Theme-wide Colors */
+  --header-bg: #2B1B3D;
+  --header-gradient: #1C142E;
+  --header-accent-gold: #FFD700;
+  --header-highlight-pink: #F4ABC4;
+
   /* Dark Theme (Default) */
   --bg-primary: #1A1A2E;
   --bg-secondary: #0E0E20;
@@ -86,8 +92,33 @@ a:hover {
     color: var(--link-hover);
 }
 
+#main-header nav a {
+    position: relative;
+    padding: 0.5rem 0;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+}
+
+#main-header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 1px;
+    background-color: var(--header-accent-gold);
+    transition: transform 0.3s ease-out;
+}
+
+#main-header nav a:hover::after,
+#main-header nav a.active::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
 #main-header nav a:hover {
-    text-shadow: 0 0 8px var(--accent-gold);
+    color: var(--link-hover);
+    text-shadow: 0 0 8px var(--header-accent-gold);
 }
 
 .container {
@@ -102,15 +133,38 @@ a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     z-index: 100;
-    background: linear-gradient(to bottom, var(--overlay-bg), transparent);
+    background: linear-gradient(to right, var(--header-bg), var(--header-gradient));
+    border-bottom: 1px solid var(--header-accent-gold);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 #main-header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+#main-header .search-form {
+    position: relative;
+    width: 250px;
+}
+
+#main-header .search-input {
+    background-color: rgba(0,0,0,0.2);
+    border: 1px solid var(--header-bg);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+#main-header .search-input:focus {
+    background-color: rgba(0,0,0,0.4);
+    border-color: var(--header-accent-gold);
+    box-shadow: 0 0 10px var(--header-accent-gold);
 }
 
 .logo {
