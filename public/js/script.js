@@ -108,6 +108,39 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchBooks();
     }
 
+    // --- "Most Popular" Book Loading ---
+    const popularBookGrid = document.querySelector('#most-popular .book-grid');
+    if (popularBookGrid) {
+        const fetchPopularBooks = async () => {
+            try {
+                const res = await fetch('/api/books');
+                if (!res.ok) throw new Error('Could not fetch popular books.');
+                let books = await res.json();
+
+                // Sort by popularity descending
+                books.sort((a, b) => b.popularity - a.popularity);
+
+                const popular = books.slice(0, 4); // Get top 4
+                let bookCardsHTML = '';
+                popular.forEach(book => {
+                    bookCardsHTML += `
+                        <a href="book.html?id=${book.id}" class="book-card-link">
+                            <div class="book-card">
+                                <img src="${book.cover_image}" alt="Cover of ${book.title}" class="book-cover">
+                                <h3 class="book-title">${book.title}</h3>
+                                <p class="book-author">${book.author}</p>
+                            </div>
+                        </a>
+                    `;
+                });
+                popularBookGrid.innerHTML = bookCardsHTML;
+            } catch (err) {
+                popularBookGrid.innerHTML = `<p style="color: var(--accent-burgundy);">${err.message}</p>`;
+            }
+        };
+        fetchPopularBooks();
+    }
+
     // --- Signup Form Logic ---
     const signupForm = document.getElementById('signup-form');
     if (signupForm) {
