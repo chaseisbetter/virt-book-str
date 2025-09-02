@@ -138,10 +138,21 @@ a:hover {
     background: radial-gradient(ellipse at bottom, var(--bg-secondary) 0%, var(--bg-primary) 100%);
 }
 
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
 
 .hero-content {
     position: relative;
     z-index: 1;
+    margin: 0 auto; /* Explicitly center */
+    text-align: center;
 }
 
 #hero h1 {
