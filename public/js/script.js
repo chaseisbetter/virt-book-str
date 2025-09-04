@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let particles = [];
 
         const setCanvasSize = () => {
-            // Set canvas size to the hero section's size
             const hero = document.getElementById('hero');
             if (hero) {
                 canvas.width = hero.offsetWidth;
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     size: Math.random() * 2 + 1,
                     speedX: (Math.random() * 0.5 - 0.25),
                     speedY: (Math.random() * -0.5 - 0.2),
-                    color: 'rgba(255, 215, 0, ' + (Math.random() * 0.5 + 0.3) + ')'
+                    color: 'rgba(212, 175, 55, ' + (Math.random() * 0.5 + 0.3) + ')' // Using the new gold color
                 });
             }
         };
@@ -72,6 +71,107 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
+    }
+
+    // --- Dynamic Book Loading (for homepage) ---
+    const bookGrid = document.querySelector('#featured-books .book-grid');
+    if (bookGrid) {
+        const fetchBooks = async () => {
+            try {
+                const res = await fetch('/api/books');
+                if (!res.ok) throw new Error('Could not fetch books from the inkwell.');
+                const books = await res.json();
+
+                if (books.length === 0) {
+                    bookGrid.innerHTML = '<p>No tomes found in the library. Please check back later.</p>';
+                    return;
+                }
+
+                const featured = books.slice(0, 4); // Show first 4 as featured
+                let bookCardsHTML = '';
+                featured.forEach(book => {
+                    bookCardsHTML += `
+                        <a href="book.html?id=${book.id}" class="book-card-link">
+                            <div class="book-card">
+                                <img src="${book.cover_image}" alt="Cover of ${book.title}" class="book-cover">
+                                <h3 class="book-title">${book.title}</h3>
+                                <p class="book-author">${book.author}</p>
+                            </div>
+                        </a>
+                    `;
+                });
+                bookGrid.innerHTML = bookCardsHTML;
+            } catch (err) {
+                bookGrid.innerHTML = `<p style="color: var(--accent-burgundy);">${err.message}</p>`;
+            }
+        };
+        fetchBooks();
+    }
+
+    // --- "Most Popular" Book Loading ---
+    const popularBookGrid = document.querySelector('#most-popular .book-grid');
+    if (popularBookGrid) {
+        const fetchPopularBooks = async () => {
+            try {
+                const res = await fetch('/api/books');
+                if (!res.ok) throw new Error('Could not fetch popular books.');
+                let books = await res.json();
+
+                // Sort by popularity descending
+                books.sort((a, b) => b.popularity - a.popularity);
+
+                const popular = books.slice(0, 4); // Get top 4
+                let bookCardsHTML = '';
+                popular.forEach(book => {
+                    bookCardsHTML += `
+                        <a href="book.html?id=${book.id}" class="book-card-link">
+                            <div class="book-card">
+                                <img src="${book.cover_image}" alt="Cover of ${book.title}" class="book-cover">
+                                <h3 class="book-title">${book.title}</h3>
+                                <p class="book-author">${book.author}</p>
+                            </div>
+                        </a>
+                    `;
+                });
+                popularBookGrid.innerHTML = bookCardsHTML;
+            } catch (err) {
+                popularBookGrid.innerHTML = `<p style="color: var(--accent-burgundy);">${err.message}</p>`;
+            }
+        };
+        fetchPopularBooks();
+    }
+
+    // --- "New Arrivals" Book Loading ---
+    const newArrivalsGrid = document.querySelector('#new-arrivals .book-grid');
+    if (newArrivalsGrid) {
+        const fetchNewArrivals = async () => {
+            try {
+                const res = await fetch('/api/books');
+                if (!res.ok) throw new Error('Could not fetch new arrivals.');
+                let books = await res.json();
+
+                // Sort by release year descending
+                books.sort((a, b) => b.release_year - a.release_year);
+
+                const newBooks = books.slice(0, 4); // Get top 4
+                let bookCardsHTML = '';
+                newBooks.forEach(book => {
+                    bookCardsHTML += `
+                        <a href="book.html?id=${book.id}" class="book-card-link">
+                            <div class="book-card">
+                                <img src="${book.cover_image}" alt="Cover of ${book.title}" class="book-cover">
+                                <h3 class="book-title">${book.title}</h3>
+                                <p class="book-author">${book.author}</p>
+                            </div>
+                        </a>
+                    `;
+                });
+                newArrivalsGrid.innerHTML = bookCardsHTML;
+            } catch (err) {
+                newArrivalsGrid.innerHTML = `<p style="color: var(--accent-burgundy);">${err.message}</p>`;
+            }
+        };
+        fetchNewArrivals();
     }
 
     // --- Signup Form Logic ---
@@ -149,37 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Dynamic Book Loading (for homepage) ---
-    const bookGrid = document.querySelector('.book-grid');
-    if (bookGrid) {
-        const fetchBooks = async () => {
-            try {
-                const res = await fetch('/api/books');
-                if (!res.ok) throw new Error('Could not fetch books from the inkwell.');
-                const books = await res.json();
-
-                if (books.length === 0) {
-                    bookGrid.innerHTML = '<p>No tomes found in the library. Please check back later.</p>';
-                    return;
-                }
-
-                let bookCardsHTML = '';
-                books.forEach(book => {
-                    bookCardsHTML += `
-                        <div class="book-card">
-                            <img src="${book.cover_image}" alt="Cover of ${book.title}" class="book-cover">
-                            <h3 class="book-title">${book.title}</h3>
-                            <p class="book-author">${book.author}</p>
-                        </div>
-                    `;
-                });
-                bookGrid.innerHTML = bookCardsHTML;
-            } catch (err) {
-                bookGrid.innerHTML = `<p style="color: var(--burgundy);">${err.message}</p>`;
-            }
-        };
-        fetchBooks();
-    }
 
     // --- Search Autocomplete & Debouncing ---
     const searchInput = document.querySelector('.search-input');
