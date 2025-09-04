@@ -149,7 +149,7 @@ a:hover {
 #hero .search-form {
     position: relative;
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     margin-top: 2rem;
 }
 
@@ -217,7 +217,8 @@ a:hover {
 
 /* Hero Section */
 #hero {
-    height: 100vh;
+    height: 40vh;
+    min-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -247,8 +248,8 @@ a:hover {
 }
 
 #hero h1 {
-    font-size: 4rem;
-    max-width: 800px;
+    font-size: 3rem;
+    max-width: 600px;
     line-height: 1.2;
     text-shadow: 0 0 15px rgba(0,0,0,0.7);
 }
