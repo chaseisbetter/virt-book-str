@@ -149,8 +149,8 @@ a:hover {
 #hero .search-form {
     position: relative;
     width: 100%;
-    max-width: 500px;
-    margin-top: 2rem;
+    max-width: 300px;
+    margin-top: 1rem;
 }
 
 #hero .search-input {
@@ -217,13 +217,11 @@ a:hover {
 
 /* Hero Section */
 #hero {
-    height: 40vh;
-    min-height: 300px;
+    padding: 6rem 2rem 4rem; /* More padding at the top */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 2rem;
     position: relative;
     background: radial-gradient(ellipse at bottom, var(--bg-secondary) 0%, var(--bg-primary) 100%);
 }
@@ -248,17 +246,17 @@ a:hover {
 }
 
 #hero h1 {
-    font-size: 3rem;
-    max-width: 600px;
-    line-height: 1.2;
-    text-shadow: 0 0 15px rgba(0,0,0,0.7);
+    font-size: 2rem;
+    margin-top: 40px;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 /* Book Card & Grids */
 .book-grid, .collection-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
 }
 
 .book-card, .collection-card {
