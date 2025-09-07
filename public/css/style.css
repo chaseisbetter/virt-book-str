@@ -23,8 +23,9 @@
   --text-muted: #a0a0a0;
   --text-inverted: #0A0A1A;
   --accent-gold: #D4AF37;
-  --accent-burgundy: #800020;
+  --accent-burgundy: #800020; /* To be phased out */
   --accent-crimson: #dc143c;
+  --border-color: #5a4e2f; /* Muted Gold */
   --link-color: var(--accent-gold);
   --link-hover: #ffffff;
   --shadow-color: rgba(255, 215, 0, 0.1);
@@ -161,7 +162,7 @@ a:hover {
     font-family: 'Cormorant Garamond', serif;
     color: var(--text-primary);
     background: linear-gradient(to right, var(--header-bg), var(--header-gradient));
-    border: 1px solid var(--header-accent-gold);
+    border: 1px solid var(--border-color);
     border-radius: 50px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: all 0.3s ease-out;
@@ -261,7 +262,7 @@ a:hover {
 
 .book-card, .collection-card {
     background-color: var(--bg-secondary);
-    border: 1px solid var(--accent-burgundy);
+    border: 1px solid var(--border-color);
     padding: 1.5rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -335,7 +336,7 @@ a:hover {
 /* Auth Forms */
 form {
     background-color: var(--bg-secondary);
-    border: 1px solid var(--accent-burgundy);
+    border: 1px solid var(--border-color);
 }
 
 .form-group label {
@@ -405,7 +406,20 @@ form {
     left: 1.5rem;
     right: 1.5rem;
     display: flex;
+    gap: 1rem;
     justify-content: space-between;
+}
+
+.filter-buttons .btn-primary {
+    flex-grow: 2;
+    background: var(--accent-gold);
+    color: var(--bg-primary);
+}
+
+.filter-buttons .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
 }
 
 /* Custom noUiSlider Styles */
@@ -541,8 +555,8 @@ form {
 }
 
 .autocomplete-box a:hover {
-    background-color: var(--accent-burgundy);
-    color: var(--text-inverted);
+    background-color: var(--header-bg);
+    color: var(--header-accent-gold);
 }
 
 /* Catalog Page */
