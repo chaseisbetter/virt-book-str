@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <!-- noUiSlider CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -39,11 +41,55 @@
                     </button>
                     <div class="autocomplete-box"></div>
                 </form>
+                <button id="open-filters-btn" class="btn btn-secondary mt-4">Filter Novels</button>
             </div>
             <div class="flourish-container">
                 <!-- Placeholder for top flourish -->
             </div>
         </section>
+
+        <aside id="filter-sidebar">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-cormorant text-white">Filter Novels</h3>
+                <button id="close-filters-btn" aria-label="Close filters">&times;</button>
+            </div>
+
+            <!-- Genre Filter -->
+            <details class="filter-group" open>
+                <summary class="filter-group-title">Genre</summary>
+                <div class="filter-group-content">
+                    <!-- Genre chips will be populated here -->
+                    <p class="text-sm text-muted">Loading genres...</p>
+                </div>
+            </details>
+
+            <!-- Price Filter -->
+            <details class="filter-group" open>
+                <summary class="filter-group-title">Price Range</summary>
+                <div class="filter-group-content">
+                    <!-- Price slider will be initialized here -->
+                    <div id="price-slider"></div>
+                    <div class="flex justify-between text-white text-sm mt-2">
+                        <span id="min-price-display">$0</span>
+                        <span id="max-price-display">$100</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Rating Filter -->
+            <details class="filter-group" open>
+                <summary class="filter-group-title">Rating</summary>
+                <div class="filter-group-content">
+                    <!-- Star rating filter will be here -->
+                    <p class="text-sm text-muted">Rating filter coming soon.</p>
+                </div>
+            </details>
+
+            <div class="filter-buttons">
+                <button class="btn btn-secondary">Reset</button>
+                <button class="btn btn-primary">Apply Filters</button>
+            </div>
+        </aside>
 
         <section id="full-catalog">
             <div class="container">
@@ -84,6 +130,8 @@
         </div>
     </footer>
 
+    <!-- noUiSlider JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

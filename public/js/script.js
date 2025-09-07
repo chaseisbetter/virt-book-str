@@ -73,38 +73,139 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Full Catalog Loading ---
+    // --- Book Catalog & Filtering Logic ---
     const fullCatalogGrid = document.querySelector('#full-catalog .book-grid');
-    if (fullCatalogGrid) {
-        const fetchAllBooks = async () => {
-            try {
-                const res = await fetch('/api/books');
-                if (!res.ok) throw new Error('Could not fetch the library catalog.');
-                const books = await res.json();
+    let allBooks = []; // To store the master list of books
 
-                if (books.length === 0) {
-                    fullCatalogGrid.innerHTML = '<p>No tomes found in the library. Please check back later.</p>';
-                    return;
-                }
+    const renderBookGrid = (books) => {
+        if (!fullCatalogGrid) return;
+        if (books.length === 0) {
+            fullCatalogGrid.innerHTML = '<p>No novels match your criteria. Try adjusting the filters.</p>';
+            return;
+        }
 
-                let bookCardsHTML = '';
-                books.forEach(book => {
-                    bookCardsHTML += `
-                        <a href="book.html?id=${book.id}" class="book-card-link">
-                            <div class="book-card">
-                                <img src="${book.cover_image}" alt="Cover of ${book.title}" class="book-cover">
-                                <h3 class="book-title">${book.title}</h3>
-                                <p class="book-author">${book.author}</p>
-                            </div>
-                        </a>
-                    `;
-                });
-                fullCatalogGrid.innerHTML = bookCardsHTML;
-            } catch (err) {
+        const bookCardsHTML = books.map(book => `
+            <a href="book.html?id=${book.id}" class="book-card-link">
+                <div class="book-card">
+                    <img src="${book.cover_image}" alt="Cover of ${book.title}" class="book-cover">
+                    <h3 class="book-title">${book.title}</h3>
+                    <p class="book-author">${book.author}</p>
+                </div>
+            </a>
+        `).join('');
+        fullCatalogGrid.innerHTML = bookCardsHTML;
+    };
+
+    const fetchAndDisplayBooks = async () => {
+        try {
+            const res = await fetch('/api/books');
+            if (!res.ok) throw new Error('Could not fetch the library catalog.');
+            allBooks = await res.json();
+            renderBookGrid(allBooks);
+        } catch (err) {
+            if (fullCatalogGrid) {
                 fullCatalogGrid.innerHTML = `<p style="color: var(--accent-burgundy);">${err.message}</p>`;
             }
+        }
+    };
+
+    if (fullCatalogGrid) {
+        fetchAndDisplayBooks();
+    }
+
+    // --- Filter Sidebar Interactivity ---
+    const filterSidebar = document.getElementById('filter-sidebar');
+    const openFiltersBtn = document.getElementById('open-filters-btn');
+    const closeFiltersBtn = document.getElementById('close-filters-btn');
+
+    if (filterSidebar && openFiltersBtn && closeFiltersBtn) {
+        openFiltersBtn.addEventListener('click', () => {
+            filterSidebar.classList.add('open');
+        });
+
+        closeFiltersBtn.addEventListener('click', () => {
+            filterSidebar.classList.remove('open');
+        });
+    }
+
+    // --- Price Slider Initialization ---
+    const priceSlider = document.getElementById('price-slider');
+    if (priceSlider) {
+        const minPriceDisplay = document.getElementById('min-price-display');
+        const maxPriceDisplay = document.getElementById('max-price-display');
+
+        noUiSlider.create(priceSlider, {
+            start: [10, 80],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 100
+            },
+            format: {
+                to: function (value) {
+                    return '$' + value.toFixed(0);
+                },
+                from: function (value) {
+                    return Number(value.replace('$', ''));
+                }
+            }
+        });
+
+        priceSlider.noUiSlider.on('update', (values, handle) => {
+            minPriceDisplay.innerHTML = values[0];
+            maxPriceDisplay.innerHTML = values[1];
+        });
+    }
+
+    // --- Genre Filter Population ---
+    const genreFilterContainer = document.querySelector('.filter-group-content');
+    if (genreFilterContainer) {
+        const populateGenres = async () => {
+            try {
+                const res = await fetch('/api/books');
+                const books = await res.json();
+                const genres = [...new Set(books.map(book => book.category.main))];
+
+                genreFilterContainer.innerHTML = genres.map(genre =>
+                    `<button class="genre-chip" data-genre="${genre}">${genre}</button>`
+                ).join('');
+
+                genreFilterContainer.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('genre-chip')) {
+                        e.target.classList.toggle('active');
+                    }
+                });
+
+            } catch (err) {
+                genreFilterContainer.innerHTML = '<p class="text-sm text-muted">Could not load genres.</p>';
+            }
         };
-        fetchAllBooks();
+        populateGenres();
+    }
+
+    // --- Filter Data Collection & Application ---
+    const applyFiltersBtn = document.querySelector('.filter-buttons .btn-primary');
+    if (applyFiltersBtn) {
+        applyFiltersBtn.addEventListener('click', () => {
+            // Get selected genres
+            const selectedGenres = [...document.querySelectorAll('.genre-chip.active')].map(chip => chip.dataset.genre);
+
+            // Get price range
+            const priceRange = priceSlider.noUiSlider.get();
+            const minPrice = Number(priceRange[0].replace('$', ''));
+            const maxPrice = Number(priceRange[1].replace('$', ''));
+
+            // Filter the master list of books
+            const filteredBooks = allBooks.filter(book => {
+                const genreMatch = selectedGenres.length === 0 || selectedGenres.includes(book.category.main);
+                const priceMatch = book.price.final >= minPrice && book.price.final <= maxPrice;
+                // Rating filter can be added here in the future
+                return genreMatch && priceMatch;
+            });
+
+            renderBookGrid(filteredBooks);
+            filterSidebar.classList.remove('open'); // Close sidebar after applying
+        });
     }
 
     // --- Signup Form Logic ---
