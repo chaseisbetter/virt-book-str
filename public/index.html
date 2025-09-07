@@ -15,16 +15,13 @@
         <div class="container">
             <div class="logo"><a href="index.html">Eternal Ink Books</a></div>
             <nav>
-                <form class="search-form" action="search.html" method="GET">
-                    <input type="search" name="q" placeholder="Search for a tome..." class="search-input" autocomplete="off">
-                    <div class="autocomplete-box"></div>
-                </form>
                 <ul>
-                    <li><a href="index.html#hero">Home</a></li>
-                    <li><a href="#collections">Collections</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#footer">About</a></li>
-                    <li><button id="theme-toggle-btn" class="btn-nav">☀️</button></li>
+                    <li><a href="#">Genres</a></li>
+                    <li><a href="#">New Releases</a></li>
+                    <li><a href="#">Bestsellers</a></li>
+                    <li><a href="#">Staff Picks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,43 +31,24 @@
         <section id="hero">
             <canvas id="particle-canvas"></canvas>
             <div class="hero-content">
-                <h1>Where stories are inked forever in the hearts of dreamers.</h1>
+                <h1>Where Stories Live Forever</h1>
+                <form class="search-form" action="search.html" method="GET">
+                    <input type="search" name="q" placeholder="Search a novel..." class="search-input" autocomplete="off">
+                    <button type="submit" class="search-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    <div class="autocomplete-box"></div>
+                </form>
             </div>
             <div class="flourish-container">
                 <!-- Placeholder for top flourish -->
             </div>
         </section>
 
-        <section id="featured-books">
+        <section id="full-catalog">
             <div class="container">
-                <h2>Featured Tomes</h2>
                 <div class="book-grid">
-                    <!-- Book cards will be dynamically inserted here -->
-                </div>
-            </div>
-        </section>
-
-        <section id="collections">
-            <div class="container">
-                <h2>Curated Collections</h2>
-                <div class="collection-grid">
-                    <!-- Placeholder Collection Cards -->
-                    <div class="collection-card"><h3>Dark Academia</h3></div>
-                    <div class="collection-card"><h3>Enemies to Lovers</h3></div>
-                    <div class="collection-card"><h3>Epic Fantasy Sagas</h3></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="events">
-            <div class="container">
-                <h2>Upcoming Events</h2>
-                <div class="event-list">
-                    <!-- Placeholder Event Item -->
-                    <div class="event-item">
-                        <p><strong>Author Signing:</strong> V.E. Schwab</p>
-                        <p>October 31st, 7:00 PM</p>
-                    </div>
+                    <!-- All book cards will be dynamically inserted here -->
                 </div>
             </div>
         </section>

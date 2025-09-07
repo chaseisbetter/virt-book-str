@@ -8,15 +8,21 @@
 }
 
 :root {
+  /* Theme-wide Colors */
+  --header-bg: #2B1B3D;
+  --header-gradient: #1C142E;
+  --header-accent-gold: #FFD700;
+  --header-highlight-pink: #F4ABC4;
+
   /* Dark Theme (Default) */
-  --bg-primary: #0A0A1A;
+  --bg-primary: #1A1A2E;
   --bg-secondary: #0E0E20;
   --bg-tertiary: rgba(255,255,255,0.02);
   --bg-footer: #080818;
   --text-primary: #e0e0e0;
   --text-muted: #a0a0a0;
   --text-inverted: #0A0A1A;
-  --accent-gold: #FFD700;
+  --accent-gold: #D4AF37;
   --accent-burgundy: #800020;
   --accent-crimson: #dc143c;
   --link-color: var(--accent-gold);
@@ -86,6 +92,35 @@ a:hover {
     color: var(--link-hover);
 }
 
+#main-header nav a {
+    position: relative;
+    padding: 0.5rem 0;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+}
+
+#main-header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 1px;
+    background-color: var(--header-accent-gold);
+    transition: transform 0.3s ease-out;
+}
+
+#main-header nav a:hover::after,
+#main-header nav a.active::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+#main-header nav a:hover {
+    color: var(--link-hover);
+    text-shadow: 0 0 8px var(--header-accent-gold);
+}
+
 .container {
     width: 90%;
     max-width: 1100px;
@@ -98,15 +133,73 @@ a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     z-index: 100;
-    background: linear-gradient(to bottom, var(--overlay-bg), transparent);
+    background: linear-gradient(to right, var(--header-bg), var(--header-gradient));
+    border-bottom: 1px solid var(--header-accent-gold);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 #main-header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+#hero .search-form {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    margin-top: 1rem;
+}
+
+#hero .search-input {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    padding-right: 4rem; /* Space for the button */
+    font-size: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--text-primary);
+    background: linear-gradient(to right, var(--header-bg), var(--header-gradient));
+    border: 1px solid var(--header-accent-gold);
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease-out;
+}
+
+#hero .search-input::placeholder {
+    color: #c0b4d4; /* Soft lavender */
+    opacity: 0.8;
+}
+
+#hero .search-btn {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--header-accent-gold);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+#hero .search-input:focus,
+#hero .search-input:hover {
+    border-color: var(--header-highlight-pink);
+    box-shadow: 0 0 15px 5px rgba(244, 171, 196, 0.2);
+}
+
+#hero .search-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+#hero .search-btn:hover svg {
+    filter: drop-shadow(0 0 3px var(--header-accent-gold));
 }
 
 .logo {
@@ -124,44 +217,46 @@ a:hover {
 
 /* Hero Section */
 #hero {
-    height: 100vh;
+    padding: 6rem 2rem 4rem; /* More padding at the top */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 2rem;
-    background: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=1887&auto=format&fit=crop') no-repeat center center/cover;
-    background-attachment: fixed;
     position: relative;
+    background: radial-gradient(ellipse at bottom, var(--bg-secondary) 0%, var(--bg-primary) 100%);
 }
 
-#hero::before {
-    content: '';
+#particle-canvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--overlay-bg);
+    z-index: 0;
 }
+
 
 .hero-content {
     position: relative;
     z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #hero h1 {
-    font-size: 4rem;
-    max-width: 800px;
-    line-height: 1.2;
-    text-shadow: 0 0 15px rgba(0,0,0,0.7);
+    font-size: 2rem;
+    margin-top: 40px;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 /* Book Card & Grids */
 .book-grid, .collection-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
 }
 
 .book-card, .collection-card {
@@ -253,6 +348,71 @@ form {
     color: var(--text-primary);
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+    #main-header .container {
+        padding: 0 1rem;
+    }
+    #main-header nav ul {
+        gap: 0.5rem;
+    }
+    #main-header nav a {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+    .logo {
+        font-size: 1.2rem;
+    }
+    #hero h1 {
+        font-size: 1.5rem;
+    }
+    #hero .search-form {
+        max-width: 90%;
+    }
+    .book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+}
+
+/* Blog Page Styles */
+#blog-main {
+    padding-top: 120px;
+}
+
+.post-summary-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--accent-gold);
+}
+
+.post-summary-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Single Post Page Styles */
+#post-main {
+    padding-top: 120px;
+}
+
+.post-hero-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    margin: 2rem 0;
+}
+
+.post-meta {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
 .btn {
     background-color: var(--accent-gold);
     color: var(--text-inverted);
@@ -304,6 +464,48 @@ form {
 }
 
 /* Book Detail Page */
+#book-detail-main {
+    padding-top: 120px; /* Adjust based on header height */
+}
+
+.book-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.book-detail-cover img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-detail-cover img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px 8px var(--accent-gold);
+}
+
+@keyframes fly-to-cart {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.1) translate(100vw, -100vh);
+        opacity: 0;
+    }
+}
+
+.fly-to-cart-animation {
+    position: absolute;
+    z-index: 200;
+    animation: fly-to-cart 1s ease-in-out forwards;
+}
+
 .book-detail-title {
     text-shadow: 0 0 10px var(--accent-gold);
 }
@@ -325,8 +527,23 @@ form {
 }
 
 .collapsible-btn {
+    background-color: var(--bg-secondary);
     color: var(--accent-gold);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
     border-bottom: 1px solid var(--accent-burgundy);
+    transition: background-color 0.3s ease;
+}
+
+.collapsible-btn:hover {
+    background-color: var(--accent-burgundy);
+    color: var(--text-inverted);
 }
 
 .collapsible-btn:after {
@@ -334,14 +551,22 @@ form {
 }
 
 .collapsible-content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
     background-color: var(--bg-tertiary);
     border-left: 2px solid var(--accent-gold);
+    margin-bottom: 1rem;
 }
 
 /* Reviews Section */
 .review-card {
     border: 1px solid var(--accent-burgundy);
     background-color: var(--bg-tertiary);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 3px;
 }
 
 .review-meta {

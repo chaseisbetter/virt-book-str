@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Title will be set dynamically -->
     <title>Eternal Ink Books</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,33 +15,99 @@
         <div class="container">
             <div class="logo"><a href="index.html">Eternal Ink Books</a></div>
             <nav>
-                <form class="search-form" action="search.html" method="GET">
-                    <input type="search" name="q" placeholder="Search for a tome..." class="search-input" autocomplete="off">
-                    <div class="autocomplete-box"></div>
-                </form>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="search.html">Catalog</a></li>
-                    <li><button id="theme-toggle-btn" class="btn-nav">☀️</button></li>
+                    <li><a href="#">Genres</a></li>
+                    <li><a href="#">New Releases</a></li>
+                    <li><a href="#">Bestsellers</a></li>
+                    <li><a href="#">Staff Picks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main id="book-detail-main">
-        <!-- Book details will be dynamically inserted here -->
-        <p class="loading-message">Summoning the details for this tome...</p>
+        <div class="container">
+            <div id="book-detail-content" class="book-detail-grid">
+                <!-- Book details will be dynamically inserted here -->
+                <div class="book-detail-cover">
+                    <img id="book-cover" src="" alt="Book Cover">
+                </div>
+                <div class="book-detail-info">
+                    <h1 id="book-title" class="book-detail-title"></h1>
+                    <h2 id="book-author" class="book-detail-author"></h2>
+                    <p id="book-tagline" class="book-detail-tagline"></p>
+                    <div id="book-rating" class="book-rating"></div>
+                    <div id="book-price" class="book-detail-price"></div>
+                    <div class="book-detail-actions">
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-secondary">Add to Wishlist</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="extra-sections">
+                <div class="collapsible">
+                    <button class="collapsible-btn">Full Synopsis</button>
+                    <div class="collapsible-content">
+                        <p id="book-long-description"></p>
+                    </div>
+                </div>
+                <div class="collapsible">
+                    <button class="collapsible-btn">About the Author</button>
+                    <div class="collapsible-content">
+                        <p id="author-bio"></p>
+                    </div>
+                </div>
+                <div class="collapsible">
+                    <button class="collapsible-btn">Customer Reviews</button>
+                    <div id="reviews-section" class="collapsible-content">
+                        <!-- Reviews will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <section id="similar-books">
+                <h2>You Might Also Like</h2>
+                <div id="similar-books-grid" class="book-grid">
+                    <!-- Similar books will be dynamically inserted here -->
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer id="footer">
         <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h4>Eternal Ink Books</h4>
+                    <p>A boutique bookstore for lovers of romance and fantasy, where every book is a treasure waiting to be discovered.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Our Story</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="copyright">
                 <p>&copy; 2024 Eternal Ink Books. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/book.js"></script> <!-- A dedicated script for this page -->
-    <script src="js/script.js"></script> <!-- Main script for header logic -->
+    <script src="js/book.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

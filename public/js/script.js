@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let particles = [];
 
         const setCanvasSize = () => {
-            // Set canvas size to the hero section's size
             const hero = document.getElementById('hero');
             if (hero) {
                 canvas.width = hero.offsetWidth;
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     size: Math.random() * 2 + 1,
                     speedX: (Math.random() * 0.5 - 0.25),
                     speedY: (Math.random() * -0.5 - 0.2),
-                    color: 'rgba(255, 215, 0, ' + (Math.random() * 0.5 + 0.3) + ')'
+                    color: 'rgba(212, 175, 55, ' + (Math.random() * 0.5 + 0.3) + ')' // Using the new gold color
                 });
             }
         };
@@ -72,6 +71,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
+    }
+
+    // --- Full Catalog Loading ---
+    const fullCatalogGrid = document.querySelector('#full-catalog .book-grid');
+    if (fullCatalogGrid) {
+        const fetchAllBooks = async () => {
+            try {
+                const res = await fetch('/api/books');
+                if (!res.ok) throw new Error('Could not fetch the library catalog.');
+                const books = await res.json();
+
+                if (books.length === 0) {
+                    fullCatalogGrid.innerHTML = '<p>No tomes found in the library. Please check back later.</p>';
+                    return;
+                }
+
+                let bookCardsHTML = '';
+                books.forEach(book => {
+                    bookCardsHTML += `
+                        <a href="book.html?id=${book.id}" class="book-card-link">
+                            <div class="book-card">
+                                <img src="${book.cover_image}" alt="Cover of ${book.title}" class="book-cover">
+                                <h3 class="book-title">${book.title}</h3>
+                                <p class="book-author">${book.author}</p>
+                            </div>
+                        </a>
+                    `;
+                });
+                fullCatalogGrid.innerHTML = bookCardsHTML;
+            } catch (err) {
+                fullCatalogGrid.innerHTML = `<p style="color: var(--accent-burgundy);">${err.message}</p>`;
+            }
+        };
+        fetchAllBooks();
     }
 
     // --- Signup Form Logic ---
@@ -149,37 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Dynamic Book Loading (for homepage) ---
-    const bookGrid = document.querySelector('.book-grid');
-    if (bookGrid) {
-        const fetchBooks = async () => {
-            try {
-                const res = await fetch('/api/books');
-                if (!res.ok) throw new Error('Could not fetch books from the inkwell.');
-                const books = await res.json();
-
-                if (books.length === 0) {
-                    bookGrid.innerHTML = '<p>No tomes found in the library. Please check back later.</p>';
-                    return;
-                }
-
-                let bookCardsHTML = '';
-                books.forEach(book => {
-                    bookCardsHTML += `
-                        <div class="book-card">
-                            <img src="${book.cover_image}" alt="Cover of ${book.title}" class="book-cover">
-                            <h3 class="book-title">${book.title}</h3>
-                            <p class="book-author">${book.author}</p>
-                        </div>
-                    `;
-                });
-                bookGrid.innerHTML = bookCardsHTML;
-            } catch (err) {
-                bookGrid.innerHTML = `<p style="color: var(--burgundy);">${err.message}</p>`;
-            }
-        };
-        fetchBooks();
-    }
 
     // --- Search Autocomplete & Debouncing ---
     const searchInput = document.querySelector('.search-input');

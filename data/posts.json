@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Top 10 Enchanted Fantasy Romance Novels",
+    "author": "Elara Vance",
+    "publish_date": "2025-08-31",
+    "tags": ["top 10", "fantasy romance", "must-reads", "enchanted worlds"],
+    "hero_image": "https://placehold.co/800x400/1A1A2E/D4AF37/png?text=Top+10+Fantasy+Romance",
+    "content_html": "<p>Welcome, dreamers, to a curated list of the most enchanting fantasy romance novels that have graced our shelves. These are the stories that sweep you off your feet and into worlds of magic, danger, and breathtaking love...</p><h2>1. A Court of Thorns and Roses by Sarah J. Maas</h2><p>No list of modern fantasy romance would be complete without this phenomenal series. It's a masterful retelling of Beauty and the Beast, set in a treacherous world of Fae courts, ancient curses, and a love that defies all odds. The world-building is immersive, and the character arcs are simply unforgettable.</p><h2>2. Fourth Wing by Rebecca Yarros</h2><p>Enter the brutal and elite world of a war college for dragon riders. This book took the world by storm with its non-stop action, incredible magic system, and a romance that will leave you breathless. The tension is palpable, and the stakes couldn't be higher.</p>",
+    "poll": {
+      "question": "Which fantasy romance trope is your favorite?",
+      "options": ["Enemies to Lovers", "Fated Mates", "Forbidden Love", "Forced Proximity"],
+      "votes": [152, 110, 95, 88]
+    },
+    "comments": [
+      {
+        "id": 101,
+        "user": "BookWyrm",
+        "date": "2025-09-01",
+        "text": "Great list! So glad to see ACOTAR at number one, it's a masterpiece."
+      },
+      {
+        "id": 102,
+        "user": "DragonMaster",
+        "date": "2025-09-01",
+        "text": "I can't believe Fourth Wing didn't make the top 3! The tension is unmatched."
+      }
+    ]
+  }
+]

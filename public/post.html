@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternal Ink Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="container">
+            <div class="logo"><a href="index.html">Eternal Ink Books</a></div>
+            <nav>
+                <ul>
+                    <li><a href="#">Genres</a></li>
+                    <li><a href="#">New Releases</a></li>
+                    <li><a href="#">Bestsellers</a></li>
+                    <li><a href="#">Staff Picks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="post-main">
+        <div class="container">
+            <article id="post-content">
+                <!-- Post content will be dynamically inserted here -->
+            </article>
+            <aside id="post-sidebar">
+                <div id="poll-section">
+                    <!-- Poll will be dynamically inserted here -->
+                </div>
+            </aside>
+            <section id="comments-section">
+                <h2>Comments</h2>
+                <div id="comments-container">
+                    <!-- Comments will be dynamically inserted here -->
+                </div>
+                <form id="comment-form">
+                    <h3>Leave a Comment</h3>
+                    <div class="form-group">
+                        <label for="comment-user">Name</label>
+                        <input type="text" id="comment-user" name="user" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment-text">Comment</label>
+                        <textarea id="comment-text" name="text" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Submit Comment</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2024 Eternal Ink Books. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/post.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
