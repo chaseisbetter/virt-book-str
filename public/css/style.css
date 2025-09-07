@@ -348,6 +348,104 @@ form {
     color: var(--text-primary);
 }
 
+/* Filter Sidebar */
+#filter-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 320px;
+    background: rgba(14, 14, 32, 0.8); /* var(--bg-secondary) with alpha */
+    backdrop-filter: blur(10px);
+    border-right: 1px solid var(--header-accent-gold);
+    box-shadow: 5px 0 25px rgba(0,0,0,0.5);
+    padding: 1.5rem;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+#filter-sidebar.open {
+    transform: translateX(0);
+}
+
+#close-filters-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.filter-group {
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.filter-group-title {
+    font-size: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: white;
+    cursor: pointer;
+    list-style: none; /* Remove default marker */
+}
+
+.filter-group-title::-webkit-details-marker {
+    display: none; /* Remove default marker for Chrome */
+}
+
+.filter-group-content {
+    padding-top: 1rem;
+}
+
+.filter-buttons {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Custom noUiSlider Styles */
+.noUi-target {
+    background: #4A4A6A;
+    border-radius: 5px;
+    border: none;
+    box-shadow: inset 0 1px 1px #333;
+}
+.noUi-connect {
+    background: var(--header-accent-gold);
+}
+.noUi-handle {
+    border: 1px solid #FFF;
+    border-radius: 50%;
+    background: var(--header-bg);
+    box-shadow: 0 0 5px var(--header-accent-gold);
+    cursor: grab;
+}
+.noUi-handle:focus {
+    outline: none;
+}
+
+.genre-chip {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--accent-gold);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.genre-chip.active,
+.genre-chip:hover {
+    background-color: var(--accent-gold);
+    color: var(--bg-primary);
+    box-shadow: 0 0 10px var(--accent-gold);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     #main-header .container {

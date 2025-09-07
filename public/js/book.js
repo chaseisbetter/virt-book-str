@@ -63,14 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('book-rating').innerHTML = renderStars(book.rating);
         }
 
-        if (book.price && typeof book.price === 'object') {
+        if (book.price && typeof book.price === 'object' && book.price.final !== undefined) {
             let priceHTML = `<span class="final-price">$${book.price.final.toFixed(2)}</span>`;
             if (book.price.discount_percent > 0) {
-                priceHTML += ` <span class="base-price">$${book.price.base.toFixed(2)}</span>`;
+                priceHTML = `<span class="base-price" style="text-decoration: line-through;">$${book.price.base.toFixed(2)}</span> ` + priceHTML;
             }
             document.getElementById('book-price').innerHTML = priceHTML;
-        } else if (book.price) {
-             document.getElementById('book-price').textContent = `$${book.price.toFixed(2)}`;
         }
 
         document.getElementById('book-long-description').textContent = book.long_description;
