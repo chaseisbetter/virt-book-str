@@ -15,7 +15,7 @@
 
     <header id="main-header">
         <div class="container">
-            <div class="logo"><a href="index.html">Eternal Ink Books</a></div>
+            <a href="index.html" class="logo">Eternal Ink Books</a>
             <nav>
                 <ul>
                     <li><a href="#">Genres</a></li>
@@ -35,31 +35,28 @@
             <div class="hero-content">
                 <h1>Where Stories Live Forever</h1>
                 <form class="search-form" action="search.html" method="GET">
-                    <input type="search" name="q" placeholder="Search a novel..." class="search-input" autocomplete="off">
+                    <input type="search" name="q" placeholder="Search a novel..." class="search-input form-control" autocomplete="off">
                     <button type="submit" class="search-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </button>
                     <div class="autocomplete-box"></div>
                 </form>
-                <button id="open-filters-btn" class="btn btn-secondary mt-4">Filter Novels</button>
-            </div>
-            <div class="flourish-container">
-                <!-- Placeholder for top flourish -->
+<button id="open-filters-btn" class="btn btn-secondary">Filter Novels</button>
             </div>
         </section>
 
         <aside id="filter-sidebar">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-cormorant text-white">Filter Novels</h3>
+            <div class="filter-header">
+                <h3>Filter Novels</h3>
                 <button id="close-filters-btn" aria-label="Close filters">&times;</button>
             </div>
 
             <!-- Genre Filter -->
             <details class="filter-group" open>
                 <summary class="filter-group-title">Genre</summary>
-                <div class="filter-group-content">
+                <div class="filter-group-content" id="genre-filter-container">
                     <!-- Genre chips will be populated here -->
-                    <p class="text-sm text-muted">Loading genres...</p>
+                    <p>Loading genres...</p>
                 </div>
             </details>
 
@@ -67,9 +64,8 @@
             <details class="filter-group" open>
                 <summary class="filter-group-title">Price Range</summary>
                 <div class="filter-group-content">
-                    <!-- Price slider will be initialized here -->
                     <div id="price-slider"></div>
-                    <div class="flex justify-between text-white text-sm mt-2">
+                    <div class="price-display">
                         <span id="min-price-display">$0</span>
                         <span id="max-price-display">$100</span>
                     </div>
@@ -80,20 +76,20 @@
             <details class="filter-group" open>
                 <summary class="filter-group-title">Rating</summary>
                 <div class="filter-group-content">
-                    <!-- Star rating filter will be here -->
-                    <p class="text-sm text-muted">Rating filter coming soon.</p>
+                    <p>Rating filter coming soon.</p>
                 </div>
             </details>
 
             <div class="filter-buttons">
                 <button class="btn btn-secondary">Reset</button>
-                <button class="btn btn-primary">Apply Filters</button>
+                <button class="btn btn-primary">Apply</button>
             </div>
         </aside>
 
         <section id="full-catalog">
             <div class="container">
-                <div class="book-grid">
+                <h2 class="section-title">Full Catalog</h2>
+                <div class="book-grid" id="book-grid-container">
                     <!-- All book cards will be dynamically inserted here -->
                 </div>
             </div>
@@ -110,6 +106,7 @@
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
+                        <li><a href="#">About Us</a></li>
                         <li><a href="#">Shipping & Returns</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Contact Us</a></li>
@@ -118,9 +115,9 @@
                 <div class="footer-social">
                     <h4>Follow Our Story</h4>
                     <ul>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">TikTok</a></li>
+                        <li><a href="#" target="_blank">Instagram</a></li>
+                        <li><a href="#" target="_blank">Twitter</a></li>
+                        <li><a href="#" target="_blank">TikTok</a></li>
                     </ul>
                 </div>
             </div>
