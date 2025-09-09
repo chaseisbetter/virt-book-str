@@ -13,26 +13,22 @@
 
     <header id="main-header">
         <div class="container">
-            <div class="logo"><a href="index.html">Eternal Ink Books</a></div>
+            <a href="index.html" class="logo">Eternal Ink Books</a>
             <nav>
-                <form class="search-form" action="search.html" method="GET">
-                    <input type="search" name="q" placeholder="Search for a tome..." class="search-input" autocomplete="off">
-                    <div class="autocomplete-box"></div>
-                </form>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><button id="logout-btn" class="btn-nav">Logout</button></li>
-                    <li><button id="theme-toggle-btn" class="btn-nav">☀️</button></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><button id="logout-btn" class="btn btn-secondary">Logout</button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
+    <main id="profile-main">
         <section id="profile-section">
             <div class="container">
-                <h2>My Profile</h2>
-                <div id="profile-info">
+                <h1 class="page-title">My Profile</h1>
+                <div id="profile-info" class="card">
                     <!-- User info will be dynamically inserted here -->
                     <p>Loading...</p>
                 </div>
@@ -42,6 +38,29 @@
 
     <footer id="footer">
         <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h4>Eternal Ink Books</h4>
+                    <p>A boutique bookstore for lovers of romance and fantasy, where every book is a treasure waiting to be discovered.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Our Story</h4>
+                    <ul>
+                        <li><a href="#" target="_blank">Instagram</a></li>
+                        <li><a href="#" target="_blank">Twitter</a></li>
+                        <li><a href="#" target="_blank">TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="copyright">
                 <p>&copy; 2024 Eternal Ink Books. All Rights Reserved.</p>
             </div>

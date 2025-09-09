@@ -10,55 +10,28 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-    <header id="main-header">
-        <div class="container">
-            <div class="logo"><a href="index.html">Eternal Ink Books</a></div>
-            <nav>
-                <form class="search-form" action="search.html" method="GET">
-                    <input type="search" name="q" placeholder="Search for a tome..." class="search-input" autocomplete="off">
-                    <div class="autocomplete-box"></div>
-                </form>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><button id="theme-toggle-btn" class="btn-nav">☀️</button></li>
-                </ul>
-            </nav>
+    <div class="auth-container">
+        <div class="card auth-form">
+            <h1>Join the Coven</h1>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                <p id="form-message" class="form-message"></p>
+            </form>
+            <p class="auth-switch">Already have an account? <a href="login.html">Login</a></p>
         </div>
-    </header>
-
-    <main>
-        <section id="signup-form-section">
-            <div class="container">
-                <h2>Join the Coven</h2>
-                <form id="signup-form">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" required>
-                    </div>
-                    <button type="submit" class="btn">Sign Up</button>
-                    <p id="form-message"></p>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer id="footer">
-        <div class="container">
-            <div class="copyright">
-                <p>&copy; 2024 Eternal Ink Books. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
