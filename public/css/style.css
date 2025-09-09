@@ -422,25 +422,88 @@ form {
     color: var(--text-muted);
 }
 
-/* Custom noUiSlider Styles */
-.noUi-target {
-    background: #4A4A6A;
-    border-radius: 5px;
-    border: none;
-    box-shadow: inset 0 1px 1px #333;
+/* Custom Dual Range Slider Styles */
+.dual-range-slider {
+    position: relative;
+    width: 100%;
+    height: 40px;
 }
-.noUi-connect {
-    background: var(--header-accent-gold);
+
+.dual-range-slider .track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--bg-primary);
+    border-radius: 3px;
+    transform: translateY(-50%);
 }
-.noUi-handle {
-    border: 1px solid #FFF;
-    border-radius: 50%;
+
+.dual-range-slider .range {
+    position: absolute;
+    top: 50%;
+    height: 6px;
+    background: var(--accent-gold);
+    border-radius: 3px;
+    transform: translateY(-50%);
+}
+
+.dual-range-slider .thumb {
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
     background: var(--header-bg);
-    box-shadow: 0 0 5px var(--header-accent-gold);
+    border: 2px solid var(--accent-gold);
+    border-radius: 50%;
     cursor: grab;
+    transform: translate(-50%, -50%);
+    transition: box-shadow 0.2s ease;
+    z-index: 2;
 }
-.noUi-handle:focus {
-    outline: none;
+
+.dual-range-slider .thumb:hover {
+    box-shadow: 0 0 10px var(--accent-gold);
+}
+
+.dual-range-slider .thumb:active,
+.dual-range-slider .thumb.dragging {
+    cursor: grabbing;
+    box-shadow: 0 0 15px var(--accent-gold);
+}
+
+.dual-range-slider .value-label {
+    position: absolute;
+    top: -35px;
+    transform: translateX(-50%);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    border: 1px solid var(--border-color);
+}
+
+.dual-range-slider .value-label:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--border-color);
+}
+
+.dual-range-slider .thumb:hover .value-label,
+.dual-range-slider .thumb.dragging .value-label {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
 }
 
 .genre-chip {

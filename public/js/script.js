@@ -128,32 +128,74 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Price Slider Initialization ---
-    const priceSlider = document.getElementById('price-slider');
-    if (priceSlider) {
+
+    // --- Dual Range Slider Class & Initialization ---
+    class DualRangeSlider {
+        constructor(selector, options = {}) {
+            this.container = typeof selector === 'string' ? document.querySelector(selector) : selector;
+            if (!this.container) return;
+            this.options = {
+                min: 0, max: 100, values: [0, 100], step: 1,
+                onChange: null, ...options
+            };
+            this.values = [...this.options.values];
+            this.isDragging = false; this.activeThumb = null;
+            this.init();
+        }
+        init() {
+            this.track = this.container.querySelector('.track');
+            this.range = this.container.querySelector('.range');
+            this.thumbMin = this.container.querySelector('[data-thumb="min"]');
+            this.thumbMax = this.container.querySelector('[data-thumb="max"]');
+            this.labelMin = this.thumbMin.querySelector('.value-label');
+            this.labelMax = this.thumbMax.querySelector('.value-label');
+            this.bindEvents(); this.updateUI();
+        }
+        bindEvents() {
+            this.thumbMin.addEventListener('mousedown', (e) => this.startDrag(e, 'min'));
+            this.thumbMax.addEventListener('mousedown', (e) => this.startDrag(e, 'max'));
+            document.addEventListener('mousemove', (e) => this.drag(e));
+            document.addEventListener('mouseup', () => this.endDrag());
+            this.thumbMin.addEventListener('touchstart', (e) => this.startDrag(e, 'min'), {passive: false});
+            this.thumbMax.addEventListener('touchstart', (e) => this.startDrag(e, 'max'), {passive: false});
+            document.addEventListener('touchmove', (e) => this.drag(e), {passive: false});
+            document.addEventListener('touchend', () => this.endDrag());
+        }
+        startDrag(e, thumb) { e.preventDefault(); this.isDragging = true; this.activeThumb = thumb; this.container.querySelector(`[data-thumb="${thumb}"]`).classList.add('dragging'); }
+        drag(e) {
+            if (!this.isDragging) return; e.preventDefault();
+            const rect = this.track.getBoundingClientRect();
+            const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            let percentage = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+            let value = this.options.min + (percentage / 100) * (this.options.max - this.options.min);
+            value = Math.round(value / this.options.step) * this.options.step;
+            if (this.activeThumb === 'min') { this.values[0] = Math.min(value, this.values[1] - this.options.step); }
+            else { this.values[1] = Math.max(value, this.values[0] + this.options.step); }
+            this.updateUI(); this.triggerChange();
+        }
+        endDrag() { if (this.isDragging) { this.isDragging = false; this.container.querySelectorAll('.thumb').forEach(thumb => thumb.classList.remove('dragging')); this.activeThumb = null; } }
+        updateUI() {
+            const minPercent = ((this.values[0] - this.options.min) / (this.options.max - this.options.min)) * 100;
+            const maxPercent = ((this.values[1] - this.options.min) / (this.options.max - this.options.min)) * 100;
+            this.thumbMin.style.left = `${minPercent}%`; this.thumbMax.style.left = `${maxPercent}%`;
+            this.range.style.left = `${minPercent}%`; this.range.style.width = `${maxPercent - minPercent}%`;
+            this.labelMin.textContent = `$${this.values[0]}`; this.labelMax.textContent = `$${this.values[1]}`;
+        }
+        triggerChange() { if (this.options.onChange) { this.options.onChange(this.values[0], this.values[1]); } }
+        getValues() { return [...this.values]; }
+    }
+
+    const priceSliderElement = document.getElementById('price-slider');
+    let priceSlider;
+    if (priceSliderElement) {
         const minPriceDisplay = document.getElementById('min-price-display');
         const maxPriceDisplay = document.getElementById('max-price-display');
-
-        noUiSlider.create(priceSlider, {
-            start: [10, 80],
-            connect: true,
-            range: {
-                'min': 0,
-                'max': 100
-            },
-            format: {
-                to: function (value) {
-                    return '$' + value.toFixed(0);
-                },
-                from: function (value) {
-                    return Number(value.replace('$', ''));
-                }
+        priceSlider = new DualRangeSlider(priceSliderElement, {
+            min: 0, max: 100, values: [0, 100],
+            onChange: (min, max) => {
+                minPriceDisplay.textContent = `$${min}`;
+                maxPriceDisplay.textContent = `$${max}`;
             }
-        });
-
-        priceSlider.noUiSlider.on('update', (values, handle) => {
-            minPriceDisplay.innerHTML = values[0];
-            maxPriceDisplay.innerHTML = values[1];
         });
     }
 
@@ -191,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const selectedGenres = [...document.querySelectorAll('.genre-chip.active')].map(chip => chip.dataset.genre);
 
             // Get price range
-            const priceRange = priceSlider.noUiSlider.get();
+            const priceRange = priceSlider.getValues();
             const minPrice = Number(priceRange[0].replace('$', ''));
             const maxPrice = Number(priceRange[1].replace('$', ''));
 

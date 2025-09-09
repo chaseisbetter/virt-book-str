@@ -8,8 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <!-- noUiSlider CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -67,8 +65,16 @@
             <details class="filter-group" open>
                 <summary class="filter-group-title">Price Range</summary>
                 <div class="filter-group-content">
-                    <!-- Price slider will be initialized here -->
-                    <div id="price-slider"></div>
+                    <div class="dual-range-slider" id="price-slider">
+                        <div class="track"></div>
+                        <div class="range"></div>
+                        <div class="thumb" data-thumb="min">
+                            <div class="value-label">0</div>
+                        </div>
+                        <div class="thumb" data-thumb="max">
+                            <div class="value-label">100</div>
+                        </div>
+                    </div>
                     <div class="flex justify-between text-white text-sm mt-2">
                         <span id="min-price-display">$0</span>
                         <span id="max-price-display">$100</span>
@@ -130,8 +136,6 @@
         </div>
     </footer>
 
-    <!-- noUiSlider JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
