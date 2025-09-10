@@ -243,8 +243,10 @@ main > section {
 
 .form-control:focus {
     outline: none;
-    border-color: var(--accent-gold);
-    box-shadow: 0 0 10px var(--shadow-color);
+    box-shadow: none;
+    border-width: 2px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, var(--accent-gold), var(--header-highlight-pink));
 }
 
 .search-form {
@@ -264,8 +266,9 @@ main > section {
 }
 
 .search-form .search-input:focus {
-    border-color: var(--header-highlight-pink);
     box-shadow: 0 0 15px 5px rgba(244, 171, 196, 0.2);
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, var(--accent-gold), var(--header-highlight-pink));
 }
 
 .search-form .search-btn {
@@ -343,7 +346,9 @@ main > section {
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px var(--shadow-color);
-    border-color: var(--accent-gold);
+    border-width: 2px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, var(--accent-gold), var(--header-highlight-pink));
 }
 
 .book-grid {
