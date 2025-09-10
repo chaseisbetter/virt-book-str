@@ -383,4 +383,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Apply saved theme on initial load
     const savedTheme = localStorage.getItem('theme') || 'dark';
     applyTheme(savedTheme);
+
+    // --- Intersection Observer for Animations ---
+    const animatedElements = document.querySelectorAll('main > section, .card');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible-animation');
+                entry.target.classList.remove('hidden-for-animation');
+                observer.unobserve(entry.target); // Stop observing once animated
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger when 10% of the element is visible
+    });
+
+    animatedElements.forEach(el => {
+        el.classList.add('hidden-for-animation');
+        observer.observe(el);
+    });
+
+    // --- Hamburger Menu Toggle ---
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    if (hamburgerBtn && mobileNav) {
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+        });
+    }
 });

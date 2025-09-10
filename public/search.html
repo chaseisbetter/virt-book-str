@@ -6,14 +6,34 @@
     <title>Search Results | Eternal Ink Books</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <div id="eternal-background">
+        <canvas id="starfield-canvas"></canvas>
+        <div class="nebula nebula-1"></div>
+        <div class="nebula nebula-2"></div>
+        <div class="nebula nebula-3"></div>
+    </div>
+
     <header id="main-header">
         <div class="container">
             <a href="index.html" class="logo">Eternal Ink Books</a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <button id="hamburger-btn" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div id="mobile-nav">
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -71,5 +91,6 @@
 
     <script src="js/search.js"></script> <!-- A dedicated script for this page -->
     <script src="js/script.js"></script> <!-- Main script for header logic -->
+    <script src="js/background.js"></script>
 </body>
 </html>
