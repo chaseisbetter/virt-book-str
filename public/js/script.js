@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const maxPriceDisplay = document.getElementById('max-price-display');
 
         noUiSlider.create(priceSlider, {
-            start: [10, 80],
+            start: [0, 100],
             connect: true,
             range: {
                 'min': 0,
@@ -205,6 +205,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
             renderBookGrid(filteredBooks);
             filterSidebar.classList.remove('open'); // Close sidebar after applying
+        });
+    }
+
+    // --- Filter Reset Logic ---
+    const resetFiltersBtn = document.querySelector('.filter-buttons .btn-secondary');
+    if (resetFiltersBtn && priceSlider) {
+        resetFiltersBtn.addEventListener('click', () => {
+            // Reset genre chips
+            document.querySelectorAll('.genre-chip.active').forEach(chip => {
+                chip.classList.remove('active');
+            });
+
+            // Reset price slider
+            priceSlider.noUiSlider.set([0, 100]);
+
+            // Re-render the grid with all books
+            renderBookGrid(allBooks);
+
+            filterSidebar.classList.remove('open'); // Close sidebar after resetting
         });
     }
 
