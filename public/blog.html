@@ -23,9 +23,9 @@
             <a href="index.html" class="logo">Eternal Ink Books</a>
             <nav id="main-nav">
                 <ul>
-                    <li><a href="#">Genres</a></li>
-                    <li><a href="#">New Releases</a></li>
-                    <li><a href="#">Bestsellers</a></li>
+                    <li><a href="genres.html">Genres</a></li>
+                    <li><a href="new-releases.html">New Releases</a></li>
+                    <li><a href="bestsellers.html">Bestsellers</a></li>
                     <li><a href="#">Staff Picks</a></li>
                     <li><a href="blog.html" class="active">Blog</a></li>
                     <li><a href="#">Contact</a></li>
@@ -40,9 +40,9 @@
         <div id="mobile-nav">
             <nav>
                 <ul>
-                    <li><a href="#">Genres</a></li>
-                    <li><a href="#">New Releases</a></li>
-                    <li><a href="#">Bestsellers</a></li>
+                    <li><a href="genres.html">Genres</a></li>
+                    <li><a href="new-releases.html">New Releases</a></li>
+                    <li><a href="bestsellers.html">Bestsellers</a></li>
                     <li><a href="#">Staff Picks</a></li>
                     <li><a href="blog.html" class="active">Blog</a></li>
                     <li><a href="#">Contact</a></li>
@@ -52,11 +52,22 @@
     </header>
 
     <main id="blog-main">
-        <section>
+        <section class="hero-subpage">
             <div class="container">
                 <h1 class="page-title">The Eternal Ink Archives</h1>
                 <p class="subtitle">Whispers, tales, and spotlights from the world of enchanted romance.</p>
-                <div id="blog-posts-container">
+            </div>
+        </section>
+
+        <section id="featured-post-section">
+            <div class="container" id="featured-post-container">
+                <!-- Featured post will be injected here by JS -->
+            </div>
+        </section>
+
+        <section id="blog-grid-section">
+            <div class="container">
+                <div class="blog-grid" id="blog-posts-container">
                     <!-- Blog post summaries will be dynamically inserted here -->
                 </div>
             </div>

@@ -160,7 +160,7 @@ main > section:last-of-type {
 #main-header nav ul {
     list-style: none;
     display: flex;
-    gap: 2.5rem;
+    gap: 3rem; /* Increased spacing */
     margin: 0;
     padding: 0;
 }
@@ -171,6 +171,7 @@ main > section:last-of-type {
     color: var(--text-primary);
     letter-spacing: 1px;
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 #main-header nav a::after {
@@ -192,7 +193,7 @@ main > section:last-of-type {
 
 #main-header nav a:hover {
     color: var(--link-hover);
-    text-shadow: 0 0 12px var(--header-accent-gold), 0 0 5px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 15px var(--header-accent-gold); /* Refined glow */
 }
 
 
@@ -641,9 +642,22 @@ main > section:last-of-type {
         position: relative;
         transform-origin: 1px;
     }
+    #hamburger-btn.is-open span:nth-child(1) {
+        transform: rotate(45deg);
+    }
+    #hamburger-btn.is-open span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    #hamburger-btn.is-open span:nth-child(3) {
+        transform: rotate(-45deg);
+    }
     #mobile-nav {
-        display: none; /* Hidden by default */
+        display: block;
         position: absolute;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         top: 100%;
         left: 0;
         width: 100%;
@@ -651,7 +665,7 @@ main > section:last-of-type {
         padding: 1rem 0;
     }
     #mobile-nav.open {
-        display: block;
+        max-height: 100vh; /* Animate to a large enough height */
     }
     #mobile-nav ul {
         list-style: none;
@@ -707,6 +721,288 @@ main > section:last-of-type {
 .pagination-container {
     text-align: center;
     margin-top: 2rem;
+}
+
+/* --- Badges for Cards --- */
+.card-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 3;
+    background-color: var(--accent-gold);
+    color: black;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.card-badge.rank {
+    background-image: linear-gradient(to right, var(--accent-gold), var(--header-highlight-pink));
+    color: white;
+    text-shadow: 0 1px 2px black;
+}
+
+/* --- Single Post Page Readability --- */
+#post-content article {
+    max-width: 800px; /* Optimal reading width */
+    margin: 0 auto; /* Center the content */
+}
+
+#post-content p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+#post-content h1,
+#post-content h2,
+#post-content h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* --- Blog Page Styles --- */
+#featured-post-section .card {
+    /* Special styling for the big featured card if needed */
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.blog-post-card {
+    background-color: var(--bg-secondary);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+}
+
+.blog-post-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+}
+
+.blog-post-card-image-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.blog-post-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.blog-post-card:hover .blog-post-card-image {
+    transform: scale(1.05);
+}
+
+.blog-post-card-content {
+    padding: 1.5rem;
+}
+
+.blog-post-card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.blog-post-card-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+.blog-post-card-excerpt {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* --- Swiper Control Styles --- */
+.staff-picks-slider .swiper-button-next,
+.staff-picks-slider .swiper-button-prev {
+    color: var(--accent-gold);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.staff-picks-slider .swiper-button-next:hover,
+.staff-picks-slider .swiper-button-prev:hover {
+    color: white;
+    transform: scale(1.1);
+}
+
+.staff-picks-slider .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.staff-picks-slider .swiper-pagination-bullet-active {
+    background: var(--accent-gold);
+}
+
+/* --- Staff Picks Section --- */
+#staff-picks {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.staff-picks-slider {
+    padding-bottom: 3rem; /* Space for pagination */
+}
+
+.staff-pick-card {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+.staff-pick-card .book-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.4s ease;
+}
+
+.staff-pick-card:hover .book-cover {
+    transform: scale(1.05);
+}
+
+.staff-pick-card-content {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem;
+    color: white;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    width: 100%;
+}
+
+.staff-pick-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 3;
+    background-color: var(--accent-gold);
+    color: black;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.staff-pick-card .book-title {
+    font-size: 1.5rem;
+    text-shadow: 0 2px 5px black;
+}
+
+.staff-pick-card .book-author {
+    color: #ddd;
+}
+
+.staff-pick-comment {
+    font-style: italic;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* --- Subpage Hero --- */
+.hero-subpage {
+    padding-top: 140px; /* Extra padding to push below header */
+    padding-bottom: 4rem;
+    text-align: center;
+}
+
+/* --- Bento Grid Layout --- */
+.bento-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 200px;
+}
+
+.genre-card {
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+}
+
+.genre-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%);
+    z-index: 1;
+}
+
+.genre-card-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.genre-card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    margin: 0;
+    text-shadow: 0 1px 5px black;
+}
+
+.genre-card-tagline {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+
+.genre-card-info {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.genre-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+}
+
+.genre-card:hover .genre-card-info {
+    max-height: 100px; /* Adjust as needed */
+    opacity: 1;
+    margin-top: 1rem;
+}
+
+/* Example of bento item spanning */
+.genre-card.featured {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.genre-card.tall {
+    grid-row: span 2;
 }
 
 /* --- Load-in Animations --- */
