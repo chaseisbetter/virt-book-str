@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results | Eternal Ink Books</title>
+    <title>Explore Genres | Eternal Ink Books</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
@@ -23,11 +23,12 @@
             <a href="index.html" class="logo">Eternal Ink Books</a>
             <nav id="main-nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="genres.html" class="active">Genres</a></li>
+                    <li><a href="#">New Releases</a></li>
+                    <li><a href="#">Bestsellers</a></li>
+                    <li><a href="#">Staff Picks</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="genres.html">Genres</a></li>
-                    <li><a href="new-releases.html">New Releases</a></li>
-                    <li><a href="bestsellers.html">Bestsellers</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
             <button id="hamburger-btn" aria-label="Open menu">
@@ -39,29 +40,39 @@
         <div id="mobile-nav">
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="genres.html" class="active">Genres</a></li>
+                    <li><a href="#">New Releases</a></li>
+                    <li><a href="#">Bestsellers</a></li>
+                    <li><a href="#">Staff Picks</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="genres.html">Genres</a></li>
-                    <li><a href="new-releases.html">New Releases</a></li>
-                    <li><a href="bestsellers.html">Bestsellers</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main id="search-main">
-        <div class="container">
-            <h1 class="page-title" id="search-title">Search Results</h1>
-            <section id="search-results-section">
-                <div id="search-results-grid" class="book-grid">
-                    <!-- Search results will be dynamically inserted here -->
-                    <p>Loading results...</p>
+    <main id="genres-main">
+        <section class="hero-subpage">
+            <div class="container">
+                <h1 class="page-title">Explore Our Worlds</h1>
+                <p class="subtitle">Find your next great adventure across realms of fantasy and romance.</p>
+            </div>
+        </section>
+
+        <section id="genres-filter-section">
+            <div class="container">
+                <!-- Filter controls will go here -->
+                <p style="text-align: center;">Filters for popularity, new, and alphabetical sorting coming soon.</p>
+            </div>
+        </section>
+
+        <section id="genres-grid-section">
+            <div class="container">
+                <div class="bento-grid" id="genres-grid-container">
+                    <!-- Genre cards will be dynamically inserted here -->
                 </div>
-                <div id="pagination-container" class="pagination-container">
-                    <!-- "Load More" button will be inserted here -->
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
     <footer id="footer">
@@ -95,8 +106,8 @@
         </div>
     </footer>
 
-    <script src="js/search.js"></script> <!-- A dedicated script for this page -->
-    <script src="js/script.js"></script> <!-- Main script for header logic -->
+    <script src="js/script.js"></script>
     <script src="js/background.js"></script>
+    <script src="js/genres.js"></script>
 </body>
 </html>

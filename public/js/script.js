@@ -110,8 +110,65 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (fullCatalogGrid) {
-        fetchAndDisplayBooks();
+        fetchAndDisplayBooks().then(() => {
+            // This runs after books are fetched
+            populateStaffPicks();
+            initializeSwiper();
+        });
     }
+
+    // --- Staff Picks Carousel ---
+    const populateStaffPicks = () => {
+        const wrapper = document.getElementById('staff-picks-wrapper');
+        if (!wrapper || allBooks.length === 0) return;
+
+        const staffPicks = allBooks.slice(0, 6); // Pick first 6 books as staff picks
+
+        const slidesHTML = staffPicks.map(book => `
+            <div class="swiper-slide">
+                <div class="staff-pick-card">
+                    <div class="staff-pick-badge">Staff Pick</div>
+                    <img src="${book.cover_image}" alt="${book.title}" class="book-cover">
+                    <div class="staff-pick-card-content">
+                        <h3 class="book-title">${book.title}</h3>
+                        <p class="book-author">${book.author}</p>
+                        <p class="staff-pick-comment">"A truly magical read that you won't be able to put down."</p>
+                        <a href="book.html?id=${book.id}" class="btn btn-secondary" style="margin-top: 1rem;">View Details</a>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        wrapper.innerHTML = slidesHTML;
+    };
+
+    const initializeSwiper = () => {
+        if (document.querySelector('.staff-picks-slider')) {
+            new Swiper('.staff-picks-slider', {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 20,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    },
+                }
+            });
+        }
+    };
 
     // --- Filter Sidebar Interactivity ---
     const filterSidebar = document.getElementById('filter-sidebar');
@@ -383,4 +440,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // Apply saved theme on initial load
     const savedTheme = localStorage.getItem('theme') || 'dark';
     applyTheme(savedTheme);
+
+    // --- Intersection Observer for Animations ---
+    const animatedElements = document.querySelectorAll('main > section, .card');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible-animation');
+                entry.target.classList.remove('hidden-for-animation');
+                observer.unobserve(entry.target); // Stop observing once animated
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger when 10% of the element is visible
+    });
+
+    animatedElements.forEach(el => {
+        el.classList.add('hidden-for-animation');
+        observer.observe(el);
+    });
+
+    // --- Hamburger Menu Toggle ---
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    if (hamburgerBtn && mobileNav) {
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('is-open');
+            mobileNav.classList.toggle('open');
+        });
+    }
 });

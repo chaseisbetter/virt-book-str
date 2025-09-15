@@ -6,21 +6,47 @@
     <title>Eternal Ink Books | Where Stories Live Forever</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/style.css">
     <!-- noUiSlider CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css" rel="stylesheet">
 </head>
 <body>
 
+    <div id="eternal-background">
+        <canvas id="starfield-canvas"></canvas>
+        <div class="nebula nebula-1"></div>
+        <div class="nebula nebula-2"></div>
+        <div class="nebula nebula-3"></div>
+    </div>
+
     <header id="main-header">
         <div class="container">
             <a href="index.html" class="logo">Eternal Ink Books</a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="genres.html">Genres</a></li>
+                    <li><a href="new-releases.html">New Releases</a></li>
+                    <li><a href="bestsellers.html">Bestsellers</a></li>
+                    <li><a href="#">Staff Picks</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="hamburger-btn" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div id="mobile-nav">
             <nav>
                 <ul>
-                    <li><a href="#">Genres</a></li>
-                    <li><a href="#">New Releases</a></li>
-                    <li><a href="#">Bestsellers</a></li>
+                    <li><a href="genres.html">Genres</a></li>
+                    <li><a href="new-releases.html">New Releases</a></li>
+                    <li><a href="bestsellers.html">Bestsellers</a></li>
                     <li><a href="#">Staff Picks</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="#">Contact</a></li>
@@ -42,6 +68,24 @@
                     <div class="autocomplete-box"></div>
                 </form>
 <button id="open-filters-btn" class="btn btn-secondary">Filter Novels</button>
+            </div>
+        </section>
+
+        <section id="staff-picks">
+            <div class="container">
+                <h2 class="section-title">Staff Picks</h2>
+                <!-- Slider main container -->
+                <div class="swiper staff-picks-slider">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper" id="staff-picks-wrapper">
+                        <!-- Slides will be injected here by JavaScript -->
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
             </div>
         </section>
 
@@ -129,6 +173,9 @@
 
     <!-- noUiSlider JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+    <!-- Swiper.js JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/background.js"></script>
 </body>
 </html>
