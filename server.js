@@ -24,6 +24,12 @@ app.get('/api/test', (req, res) => {
     res.json({ message: 'Welcome to the Eternal Ink API!' });
 });
 
+// Fallback for all other routes to serve index.html, which is a common practice for single-page applications
+// and can help resolve pathing issues.
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
