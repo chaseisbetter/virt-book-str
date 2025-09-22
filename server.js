@@ -9,7 +9,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from the 'public' directory
-// I will move the frontend files into a 'public' folder later.
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API Routes
@@ -19,15 +18,14 @@ app.use('/api/books', require('./api/routes/books'));
 app.use('/api/posts', require('./api/routes/posts'));
 app.use('/api/search', require('./api/routes/search'));
 
+// Catch-all to serve frontend's index.html
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+
 // Simple test route
 app.get('/api/test', (req, res) => {
     res.json({ message: 'Welcome to the Eternal Ink API!' });
-});
-
-// Fallback for all other routes to serve index.html, which is a common practice for single-page applications
-// and can help resolve pathing issues.
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {
